@@ -1,0 +1,586 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1024" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Continuous Delivery - Adform</title>
+<meta name="description" content="TODO" />
+<meta name="author" content="Gediminas Guoba, Adform" />
+<style>
+.componentContainer {
+	position: absolute;
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+.bg {
+	width: 100%;
+	height: 100%;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	color: #0094D7;
+	font-family: Calibri, Arial;
+	line-height: 0.9em;
+	letter-spacing: 0.02em;
+	text-align: left;
+	font-weight: bold;
+}
+
+#impress h1 {
+	font-size: 200%;
+}
+
+#impress h2 {
+	font-size: 130%;
+}
+
+#impress small {
+	font-size: 60%;
+}
+
+#impress ul {
+	list-style-type: none;
+	margin: 0px;
+	margin-left: 1em;
+	display: block;
+}
+
+#impress ul ul {
+	list-style-type: none;
+	margin-left: 1em;
+	display: block;
+}
+
+
+</style>
+<link href="css/main.css" rel="stylesheet" />
+<link href='css/web-fonts.css' rel='stylesheet'
+	type='text/css'>
+<link rel="shortcut icon" href="favicon.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+	<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="scripts/highcharts.js"></script>
+</head>
+<body class="impress-not-supported"  style="background-image: url('img/bkg.png');	background-repeat: no-repeat;	background-size: auto 100%;	background-position: center;">
+	<!-- This is a work around / hack to get the user's browser to download the fonts  if they decide to save the presentation. -->
+	<div style="visibility: hidden; width: 0px; height: 0px"><img src="css/Lato-Bold.woff" /></div>
+	<div class="fallback-message">
+		<p>
+			Your browser <b>doesn't support the features required</b> by
+			impress.js, so you are presented with a simplified version of this
+			presentation.
+		</p>
+		<p>
+			For the best experience please use the latest <b>Chrome</b>, <b>Safari</b>
+			or <b>Firefox</b> browser.
+		</p>
+	</div>
+	<div class="bg">
+		<div id="impress">
+			<div class="step" data-x="200" data-y="546" data-scale="1">
+				<div style="width: 1024px; height: 768px; text-align: center; vertical-align: middle;">
+					<h1>Continuous Delivery</h1>
+				</div>
+			</div>
+			<div class="step" data-x="200" data-y="1350" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>About me</h2>
+					<ul>
+						<li>Gediminas Guoba</li>
+						<li>Software Architect at Adform</li>
+						<li>Email: <a href="mailto:gediminas.guoba@adform.com">gediminas.guoba@adform.com</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="200" data-y="2100" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Disclaimer</h2>
+					<p style="text-align:center">
+						We’ve started to work on<br/>
+						Continuous Delivery(CD) about 2 years ago<br/>
+						and we want to share our experience<br/>
+						with you!
+					</p>
+				</div>
+			</div>
+			<div id="reality" class="step" data-x="1250"vdata-y="546" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Reality</h2>
+					<p>
+						In 2 weeks sprint only 5 days* are spent for actual development
+					</p>
+					<div id="container"></div>
+					<div><small>* for the new Agile team</small></div>
+				</div>
+			</div>
+			<div id="challenge" class="step" data-x="1250" data-y="1350" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Challenge</h2>
+					<p>How to increase number of development days up-to 7?</p>
+					<div id="container2"></div>
+				</div>
+			</div>
+			<div class="step" data-x="1250" data-y="2100" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Continuous Delivery to the rescue!</h2>
+					<p>
+						Continuous, successful and repeatable methodology to deploying code
+					</p>
+					<div class="componentContainer" style="top: 450px; left: 650px;">
+						<img src="img/hose.png"></img>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="2300" data-y="546" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Tasks for Continuous Delivery</h2>
+					<ul>
+						<li>Source control</li>
+						<li>Continuous integration</li>
+						<li>Unit tests</li>
+						<li>Functional and UI tests</li>
+						<li>Auto release package preparation</li>
+						<li>Auto deployment</li>
+						<li>Deploy when feature is ready</li>
+						<li>Smoke tests Monitoring</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="2300" data-y="1350" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Our starting point</h2>
+					<ul>
+						<li style="color: #00CC00">Source control</li>
+						<li style="color: #CCCC00">Continuous integration <small>(manual)</small></li>
+						<li style="color: #CCCC00">Unit tests <small>(quite low coverage)</small></li>
+						<li style="color: #CC0000">Functional and UI tests</li>
+						<li style="color: #CCCC00">Auto release package preparation</li>
+						<li style="color: #CCCC00">Auto deployment <small>(a lot of manual work)</small></li>
+						<li style="color: #CC0000">Deploy when feature is ready <small>(only on Thursdays)</small></li>
+						<li style="color: #CC0000">Smoke tests</li>
+						<li style="color: #CC0000">Monitoring</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="2300" data-y="2100"
+				data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>After two months...</h2>
+					<ul>
+						<li>Custom configuration storage</li>
+						<li>Custom package storage</li>
+						<li>Automated package build and deployment</li>
+						<li>Automated UI testing and smoke testing</li>
+						<li>Automated server preparation</li>
+						<li>Implemented some monitoring</li>
+						<li>Became PowerShell gurus</li>
+						<li>We have automated VMM!</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="3768.32" data-y="498.3466666666667"
+				data-scale="2">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 61px; left: 307px; height: 650px;">
+						<img src="img/fail.jpg" height="680"></img>
+					</div>
+					<div class="componentContainer" style="top: 66px; left: 280px">
+						<h2>And we FAILED...</h2>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="5720" data-y="484" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<div class="componentContainer" style="top: 126px; left: 220px;">
+						<img src="img/pillars-of-cd.png"></img>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="5727" data-y="935" data-rotate-x="-90" data-z="-300" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<h2>Culture</h2>
+					<p align="center">
+						<img src="img/train.jpg"></img><br/>
+						Win together, loose together
+					</p>
+				</div>
+			</div>
+			<div class="step" data-x="6253" data-y="471" data-rotate-x="-90" data-rotate-y="90" data-z="-300" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<h2>Test driven development</h2>
+					<ul>
+						<li>Testing isn’t a phase — it’s something that happens throughout the delivery life cycle</li>
+						<li>Only automated testing matters</li>
+						<li>It is more cost effective than debugging</li>
+					</ul>
+					<ul style="margin-top: 100px;">
+						<li>Start writing tests even you have zero tests</li>
+						<li>Write test for every bug found</li>
+					</ul>
+					<div class="componentContainer"
+						style="top: 550px; left: 775px;">
+						<div class="transformContainer"
+							>
+							<img src="img/tdd.png"></img>
+						</div>
+					</div>
+					<div id="manual-testing" class="componentContainer" style="left:0px; top:0px; background-color:rgba(255,255,255,0.9); display:none; width: 1024px; height: 768px; text-align: center; vertical-align: middle;">
+						<img src="img/say_no.gif" style="margin-top: 200px;"></img>
+						<div class="componentContainer" style="top: 420px; left: 350px;">Manual Testing</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="5720" data-y="150" data-rotate-x="-90" data-rotate-y="180" data-z="-300" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<h2>Continuous Integration</h2>
+					<ul>
+						<li>Use Source Repository</li>
+						<li>Automate builds and unit tests</li>
+						<li>Automate package prepare and deploy</li>
+						<li>Automate integration tests</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="5154" data-y="457" data-rotate-x="-90" data-rotate-y="270" data-z="-300" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<h2>Configuration Management</h2>
+					<ul>
+						<li>Automate deployments to all environments</li>
+						<li>Infrastructure as a Code</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="5713" data-y="457" data-rotate-x="180" data-z="-500" data-scale="1">
+				<div style="width: 1024px; height: 748px; background-color: #FFFFFF">
+					<h2>Immune System</h2>
+					<ul>
+						<li>Gentle version switch</li>
+						<li>Quick rollback</li>
+						<li>Monitor system</li>
+						<li>“Do we know that it still works?”</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="3775" data-y="2382" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h1>Tools</h1>
+				</div>
+			</div>
+			<div class="step" data-x="10000" data-y="5072" data-scale="5">
+				<div style="width: 1024px; height: 768px">
+					<h2>Process</h2>
+					<img src="img/continuous_delivery.svg" height="660" />
+				</div>
+			</div>
+			<div class="step" data-x="7400" data-y="4200" data-z="1" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 300px; left: 30px; -webkit-transform: scale(0.34, 0.34); -moz-transform: scale(0.34, 0.34); transform: scale(0.34, 0.34)">
+							<img src="img/Git-Logo-2Color.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 450px; left: 30px; -webkit-transform: scale(0.51, 0.51); -moz-transform: scale(0.51, 0.51); transform: scale(0.51, 0.51)">
+							<img src="img/github.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 490px; left: 200px; text-align: center; line-height: 1">
+						<img src="img/gitlab_logo.png"></img><br/>
+						GitLab
+					</div>
+					<div class="componentContainer" style="top: 300px; left: 450px; text-align: center; line-height: 1">
+						<img src="img/section_subversion.png"></img><br/>
+						SVN
+					</div>
+					<div class="componentContainer" style="top: 520px; left: 400px; text-align: center; line-height: 1">
+						<img src="img/221-96-20090416211841.png"></img><br/>
+						Mercurial
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="8700" data-y="4100" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 50px; left: 40px;">
+						<div class="componentContainer" style="top: 40px; left: 79px; -webkit-transform: scale(0.53, 0.53); -moz-transform: scale(0.53, 0.53); transform: scale(0.53, 0.53)">
+							<img src="img/logo-title.png"></img>
+						</div>
+						<div class="componentContainer" style="top: 40px; left: 570px; text-align: center; line-height: 1">
+							<img src="img/TeamCity48.png"></img><br/>
+							<small>TeamCity</small>
+						</div>
+						<div class="componentContainer" style="top: 40px; left: 770px; width: 200px; text-align: center; line-height: 1">
+							<img src="img/4535-96-20090821130139.png"></img><br/>
+							<small>Build Bot</small>
+						</div>
+						<div class="componentContainer" style="top: 220px; left: 130px; line-height: 1">
+							<img src="img/hed_go_tagline_white.png"></img>
+						</div>
+						<div class="componentContainer" style="top: 220px; left: 600px; -webkit-transform: scale(1.34, 1.34); -moz-transform: scale(1.34, 1.34); transform: scale(1.34, 1.34)">
+								<img src="img/banner.png"></img>
+						</div>
+						<div class="componentContainer" style="top: 290px; left: 200px; width: 900px">
+							MSBuild &nbsp;Ant &nbsp;Maven &nbsp;Gradle
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="8700" data-y="4900" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 380px; left: 310px; text-align: center; line-height: 1">
+						<img src="img/nunit.jpg" width="68"></img><br/>
+						<small>NUnit</small>
+					</div>
+					<div class="componentContainer" style="top: 380px; left: 440px; text-align: center; line-height: 1">
+						<img src="img/junit.png" width="68"></img><br/>
+						<small>JUnit</small>
+					</div>
+					<div class="componentContainer" style="top: 380px; left: 540px;">
+						<img src="img/jasmine_logo.png"></img>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="9500" data-y="4600"
+				data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 30px; left: 200px; text-align: center;">
+						<p>
+							Run on existing environment<br>
+							or create separate
+						</p>
+					</div>
+					<div class="componentContainer" style="top: 220px; left: 240px; -webkit-transform: scale(0.38, 0.38); -moz-transform: scale(0.38, 0.38); transform: scale(0.38, 0.38)">
+							<img src="img/vmm.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 240px; left: 481px;">
+						<img src="img/JENKINS.png" width="68"></img>
+						<small>Jenkins VMware plugin</small>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="10700" data-y="4700"
+				data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 330px; left: 320px; width: 800px;">
+						<img src="img/selenium.png" align="middle"></img>
+						<div class="componentContainer" style="top: 50px; left: 190px;">
+							Selenium WebDriver
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="10400" data-y="5500" data-scale="2">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 380px; left: 580px;">
+							<img src="img/logo-nexus.png"></img>
+					</div>
+					<div class="componentContainer"
+						style="top: 450px; left: 570px;">
+							<img src="img/nuget_35366349.png"></img>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="9500" data-y="6450" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 370px; left: 208px;">
+						Escape
+					</div>
+					<div class="componentContainer" style="top: 330px; left: 383px; -webkit-transform: scale(0.4, 0.4); -moz-transform: scale(0.4, 0.4); transform: scale(0.4, 0.4)">
+							<img src="img/Puppet-logo.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 330px; left: 580px; -webkit-transform: scale(0.21, 0.21); -moz-transform: scale(0.21, 0.21); transform: scale(0.21, 0.21)">
+							<img src="img/OC_Chef_Logo.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 570px; left: 280px;">
+						Or any Source Control
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="10200" data-y="6450" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 330px; left: 360px; -webkit-transform: scale(0.4, 0.4); -moz-transform: scale(0.4, 0.4); transform: scale(0.4, 0.4)">
+							<img src="img/Puppet-logo.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 330px; left: 560px; -webkit-transform: scale(0.2, 0.2); -moz-transform: scale(0.2, 0.2); transform: scale(0.2, 0.2)">
+							<img src="img/OC_Chef_Logo.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 570px; left: 280px;">
+						Or any Shell or Build script
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="11400" data-y="6400" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 90px; left: 450px;">
+						Application self-check<br>
+						Run unit test<br>
+						Quick selenium test<br>
+						Etc.
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="11000" data-y="6900" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<div class="componentContainer" style="top: 350px; left: 130px;">
+						<img src="img/Zabbix-2-0-3-Brings-Tons-of-Fixes.png" height="100"></img>
+						<img src="img/Nagios-logo-500x500.png" height="150"></img>
+						<img src="img/munin.png"></img>
+						<img src="img/cacti.png"></img>
+					</div>
+					<div class="componentContainer" style="top: 490px; left: 860px;">
+							Cacti
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="8650" data-y="450" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Final word</h2>
+					<ul>
+						<li>Continuous Delivery implementation is continuous process</li>
+						<li>Don’t try to implement everything at once</li>
+						<li>Go step by step, get feedback and change your process accordingly</li>
+						<li>Automate, Automate, review and Automate again! :)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="10000" data-y="450" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h2>Adform Now</h2>
+					<ul>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Completely automated package preparation, testing and registration for release</li>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Different types of tests: unit, integration, API, JavaScript, UI and other</li>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Single click, environment aware deployment</li>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Company wide monitoring</li>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Two teams with permission to deploy to Production at any time</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" data-x="8600" data-y="1150" data-scale="1">
+				<div style="width: 1024px; height: 768px">
+					<h1>Thank You!</h1>
+				</div>
+			</div>
+			<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="7"></div>
+		</div>
+    	<script>if ("ontouchstart" in document.documentElement) {     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";}</script>
+	</div>
+	<script type="text/javascript" src="scripts/impress.js"></script>
+	<script>
+	if (!window.impressStarted) {    startImpress(document, window);    impress().init();   }
+
+	$(document).ready(function() {
+        $(document).on('impress:stepenter', function(e) {
+            var currentSlide = $(e.target).attr('id');
+
+            if (currentSlide === 'reality') {
+                drawRealityChart();
+            } else if (currentSlide === 'challenge') {
+                drawChallengeChart();
+            }
+        });
+        
+        $(document).bind('keyup',function(e){
+            if (e.keyCode==77) {
+            	$("#manual-testing").animate({opacity:'toggle'});
+            }
+        })
+    });
+
+function drawRealityChart()
+{
+	// Build the chart
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+	floating: true,
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+        	percentageDecimals: 1
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+		formatter: function() {return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';},
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Dev process',
+            data: [
+                ['Scrum rituals',       20.0],
+                ['Development',       50.0],
+                ['Manual testing',   15.0],
+                ['Integration & Manual deployment',       15.0],
+            ]
+        }]
+    });
+}
+
+function drawChallengeChart() {
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container2',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+	floating: true,
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+        	percentageDecimals: 1
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+		formatter: function() {return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';},
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Dev process',
+            data: [
+                ['Scrum rituals',       20.0],
+                ['Development',       70.0],
+                ['Integration, Testing, Deployment',       10.0],
+            ]
+        }]
+    });	
+}
+</script>
+</body>
+</html>
