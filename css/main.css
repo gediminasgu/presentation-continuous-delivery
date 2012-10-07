@@ -1,4 +1,3 @@
-/*<link href='http://fonts.googleapis.com/css?family=Lato:400,700,700italic|Ubuntu:400,700|Abril+Fatface|Hammersmith+One|Fredoka+One|Gorditas|Press+Start+2P' rel='stylesheet' type='text/css'>*/
 /*
     So you like the style of impress.js demo?
     Or maybe you are just curious how it was done?
@@ -29,8 +28,6 @@
     doesn't do any harm and gives us a fresh start.
 */
 
-@import url('http://fonts.googleapis.com/css?family=Lato:400,700,700italic|Ubuntu:400,700|Abril+Fatface|Hammersmith+One|Fredoka+One|Gorditas|Press+Start+2P');
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,7 +45,6 @@ time, mark, audio, video {
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
 }
 
@@ -85,7 +81,6 @@ table {
     want to leave anybody behind.
 */
 body {
-    font-family: 'PT Sans', sans-serif;
     min-height: 740px;
     
     background: rgb(215, 215, 215);
@@ -140,7 +135,6 @@ a:focus {
 */
 
 .fallback-message {
-    font-family: sans-serif;
     line-height: 1.3;
     
     width: 780px;
@@ -178,7 +172,6 @@ a:focus {
     -o-box-sizing:      border-box;
     box-sizing:         border-box;
 
-    font-family: 'PT Serif', georgia, serif;
     font-size: 48px;
     line-height: 1.5;
 }
@@ -190,13 +183,17 @@ a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
+    opacity: 0.1;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
     -ms-transition:     opacity 1s;
     -o-transition:      opacity 1s;
     transition:         opacity 1s;
+}
+
+.impress-enabled  .heigher_opacity {
+    opacity: 0.8;
 }
 
 .impress-enabled .step.active { opacity: 1 }
@@ -224,7 +221,6 @@ a:focus {
     color: rgb(102, 102, 102);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 
-    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 30px;
     line-height: 36px;
     letter-spacing: -1px;
