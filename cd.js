@@ -4,8 +4,8 @@
         $(document).on('impress:stepenter', function(e) {
             var currentSlide = $(e.target).attr('id');
             
-            if (("" + $(e.target).attr('class')).indexOf("bigger_opacity") > -1) {
-            	//$(".impress-enabled .step").css("opacity", 0.7);
+            if (($(e.target).attr('class')).indexOf("heigher_opacity") > -1) {
+            	$(".heigher_opacity").css("opacity", 0.8);
             }
             
             if (currentSlide === 'reality') {

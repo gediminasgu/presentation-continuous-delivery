@@ -192,10 +192,6 @@ a:focus {
     transition:         opacity 1s;
 }
 
-.impress-enabled  .heigher_opacity {
-    opacity: 0.8;
-}
-
 .impress-enabled .step.active { opacity: 1 }
 
 /*
