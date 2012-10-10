@@ -46,8 +46,11 @@
 						<li>Gediminas Guoba</li>
 						<li>Software Architect at Adform</li>
 						<li>Email: <a href="mailto:gediminas.guoba@adform.com">gediminas.guoba@adform.com</a></li>
-						<li style="padding-top: 30px;"><small><a href="http://gediminasgu.github.com/presentation-continuous-delivery/index.html">http://gediminasgu.github.com/presentation-continuous-delivery/index.html</a></small></li>
+						<li style="padding-top: 30px;"><small><a href="http://gediminasgu.github.com/presentation-continuous-delivery">http://gediminasgu.github.com/presentation-continuous-delivery</a></small></li>
 					</ul>
+				</div>
+				<div class="notes">
+					Hello, I'm Gediminas Guoba. I work for Adform as Software Architect spending a lot on automation and Continuous Delivery.
 				</div>
 			</div>
 			<div class="step" data-x="200" data-y="2100" data-scale="1">
@@ -60,8 +63,32 @@
 						with you!
 					</p>
 				</div>
+				<div class="notes">
+					At Adform we have started to automate our builds and similar stuff about 4 or more years ago
+					but just 2 years ago we stated objective to our selfs that we want to have Continuous Delivery.
+					Since then we have changed a lot in our development process and now I'll share our experience,
+					achievements and losses reaching that objective with you.
+				</div>
 			</div>
-			<div id="reality" class="step" data-x="1250" data-y="500" data-scale="1">
+			<div class="step" data-x="1250" data-y="500" data-scale="1">
+				<div class="adform_other">
+					<h2>Agenda</h2>
+					<ul>
+						<li>What Continuous Delivery(CD) is?</li>
+						<li>Pillars of CD</li>
+						<li>Process & Tools</li>
+					</ul>
+				</div>
+				<div class="notes">
+					In this presentation I'll talk what CD is,<br/>
+					what is the foundation of CD or in other words what you should change or achieve in your development
+					process to successfully go into CD<br/>
+					And if you are new to process automation, continuous integration and you are interested what tools to choose
+					in the last part I'll go through the process and will talk about what tools we've tried for what purpose
+					what works to us and what don't. 
+				</div>
+			</div>
+			<div id="reality" class="step" data-x="1250" data-y="1300" data-scale="1">
 				<div class="adform_other">
 					<h2>Reality</h2>
 					<p>
@@ -70,15 +97,29 @@
 					<div id="container" style="height:350px;"></div>
 					<div  class="componentContainer" style="top: 600px; left: 50px;"><small>* for the new Agile team</small></div>
 				</div>
+				<div class="notes">
+					Before starting CD and I believe it's the same or similar for every new Agile team, we were spending only
+					about half of sprint for real development. Other part went Scrum rituals, manual regression testing, package
+					preparation, deployment to different environments, integration testing and so on.<br/>
+					So, only the 50% (or 5 days) of our time we were spending on business value, other 30% (or 3 days) were spent
+					on routine, not interesting tasks. So that's lost for developer because that is boring tasks, that is lost
+					for business because during that 3 days we don't add value to the business.
+				</div>
 			</div>
-			<div id="challenge" class="step" data-x="1250" data-y="1300" data-scale="1">
+			<div id="challenge" class="step" data-x="1250" data-y="2100" data-scale="1">
 				<div class="adform_other">
 					<h2>Challenge</h2>
 					<p>How to increase number of development days up-to 7?</p>
 					<div id="container2" style="height:380px;"></div>
 				</div>
+				<div class="notes">
+					Wouldn't it be nice having 7 or even 8 days for development in place of 5. That's from 40 to 60 additional days
+					per year for development! So you have two choices. The first: just develop in production. Imagine, no release
+					packs, releases to different environments. Of course, your business won't run for long. The other way is ...
+					to implement CD. 
+				</div>
 			</div>
-			<div class="step" data-x="1250" data-y="2100" data-scale="1">
+			<div class="step" data-x="2300" data-y="500" data-scale="1">
 				<div class="adform_other">
 					<h2>Continuous Delivery to the rescue!</h2>
 					<p>
@@ -88,21 +129,40 @@
 						<img src="img/hose.png"></img>
 					</div>
 				</div>
+				<div class="notes">
+					How CD can help to get from 40 to 60 additional days per year for development? What it makes different?<br/>
+					From high abstraction level you can compare usual development process with CD like bucket with hose.<br/>
+					With bucket, you filling it up, going to place and then flushing in big chunks.<br/>
+					With hose you flushing continuously without such manual work like fill-up, go, flush<br/>
+					In usual development you are developing, testing, preparing package and releasing<br/>
+					The target of CD is to eliminate as much of manual routine tasks as possible automating it. So, in place
+					of manual testing, package preparation and release all that things must be done automatically.
+				</div>
 			</div>
-			<div class="step" data-x="2300" data-y="500" data-scale="1">
+			<div class="step" data-x="2300" data-y="1300" data-scale="1">
 				<div class="adform_other">
 					<h2>Tasks for Continuous Delivery</h2>
 					<ul style="line-height: 1.3; font-size: 90%;">
 						<li>Source control</li>
-						<li>Continuous integration</li>
-						<li>Unit tests</li>
-						<li>Functional and UI tests</li>
-						<li>Auto release package preparation</li>
-						<li>Auto deployment</li>
-						<li>Deploy when feature is ready</li>
-						<li>Smoke tests</li>
+						<li>Continuous Integration (CI)
+							<ul>
+								<li>Unit tests</li>
+								<li>Functional and UI tests</li>
+							</ul>
+						</li>
+						<li>Automated build & release
+							<ul>
+								<li>Auto release package preparation</li>
+								<li>Auto deployment</li>
+								<li>Smoke tests</li>
+							</ul>
+						</li>
 						<li>Monitoring</li>
 					</ul>
+				</div>
+				<div class="notes">
+					So, to achieve CD you should be done following tasks.
+					Source control. I think that's common these days.
 				</div>
 			</div>
 			<div class="step" data-x="2300" data-y="1300" data-scale="1">
@@ -110,13 +170,19 @@
 					<h2>Our starting point</h2>
 					<ul style="line-height: 1.3; font-size: 90%;">
 						<li style="color: #00CC00">Source control</li>
-						<li style="color: #CCCC00">Continuous integration <small>(manual)</small></li>
-						<li style="color: #CCCC00">Unit tests <small>(quite low coverage)</small></li>
-						<li style="color: #CC0000">Functional and UI tests</li>
-						<li style="color: #CCCC00">Auto release package preparation</li>
-						<li style="color: #CCCC00">Auto deployment <small>(a lot of manual work)</small></li>
-						<li style="color: #CC0000">Deploy when feature is ready <small>(only on Thursdays)</small></li>
-						<li style="color: #CC0000">Smoke tests</li>
+						<li style="color: #CCAA00">Continuous Integration (CI) <small>(mostly manual)</small>
+							<ul>
+								<li style="color: #CCAA00">Unit tests <small>(quite low coverage)</small></li>
+								<li style="color: #CC0000">Functional and UI tests</li>
+							</ul>
+						</li>
+						<li style="color: #CCAA00">Automated build & release
+							<ul>
+								<li style="color: #CCAA00">Auto release package preparation</li>
+								<li style="color: #CCAA00">Auto deployment <small>(a lot of manual work)</small></li>
+								<li style="color: #CC0000">Smoke tests</li>
+							</ul>
+						</li>
 						<li style="color: #CC0000">Monitoring</li>
 					</ul>
 				</div>
@@ -148,12 +214,13 @@
 			</div>
 			<div class="step" data-x="5800" data-y="500" data-scale="1">
 				<div class="adform_other">
-					<div class="componentContainer" style="top: 126px; left: 220px;">
+					<h2>Pillars of Continuous Delivery</h2>
+					<div class="componentContainer" style="top: 150px; left: 220px;">
 						<img src="img/pillars-of-cd.png"></img>
 					</div>
 				</div>
 			</div>
-			<div class="step" data-x="5800" data-y="884" data-rotate-x="-90" data-z="-384" data-scale="1">
+			<div class="step" data-x="6850" data-y="500" data-scale="1">
 				<div class="adform_other">
 					<h2>Culture</h2>
 					<p align="center">
@@ -162,7 +229,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="step" data-x="6312" data-y="500" data-rotate-x="-90" data-rotate-y="90" data-z="-288" data-scale="0.75">
+			<div class="step" data-x="7900" data-y="500" data-scale="1">
 				<div class="adform_other">
 					<h2>Test driven development</h2>
 					<ul>
@@ -183,7 +250,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="step" data-x="5800" data-y="116" data-rotate-x="-90" data-rotate-y="180" data-z="-384" data-scale="1">
+			<div class="step" data-x="7900" data-y="1300" data-scale="1">
 				<div class="adform_other">
 					<h2>Continuous Integration</h2>
 					<ul>
@@ -194,7 +261,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="step" data-x="5288" data-y="500" data-rotate-x="-90" data-rotate-y="270" data-z="-288" data-scale="0.75">
+			<div class="step" data-x="6850" data-y="1300" data-scale="1">
 				<div class="adform_other">
 					<h2>Configuration Management</h2>
 					<ul>
@@ -203,7 +270,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="step" data-x="5800" data-y="500" data-rotate-x="180" data-z="-768" data-scale="1">
+			<div class="step" data-x="5800" data-y="1300" data-scale="1">
 				<div class="adform_other">
 					<h2>Immune System</h2>
 					<ul>
@@ -249,32 +316,37 @@
 					</div>
 				</div>
 			</div>
-			<div class="step" data-x="1300" data-y="3700" data-scale="1">
+			<div class="step" data-x="2100" data-y="4700" data-scale="3">
 				<div style="width: 1024px; height: 768px">
-					<div class="box" style="position: absolute; top: 50px; left: 40px; width: 950px; height: 360px;">
-						<div class="componentContainer" style="top: 40px; left: 79px; -webkit-transform: scale(0.53, 0.53); -moz-transform: scale(0.53, 0.53); transform: scale(0.53, 0.53)">
-							<a href="http://jenkins-ci.org/"><img src="img/logo-title.png" /></a>
+					<div class="box" style="position: absolute; top: 420px; left: 130px; width: 450px; height: 200px;">
+						<div class="componentContainer" style="top: 20px; left: 20px;">
+							<a href="http://jenkins-ci.org/"><img src="img/logo-title.png" width="200" /></a>
 						</div>
-						<div class="componentContainer" style="top: 40px; left: 570px; text-align: center; line-height: 1">
+						<div class="componentContainer" style="top: 30px; left: 220px; text-align: center; line-height: 1">
 							<a href="http://www.jetbrains.com/teamcity/"><img src="img/TeamCity48.png" /><br/>
 							<small>TeamCity</small></a>
 						</div>
-						<div class="componentContainer" style="top: 40px; left: 770px; width: 200px; text-align: center; line-height: 1">
-							<a href="http://trac.buildbot.net/"><img src="img/4535-96-20090821130139.png" /><br/>
+						<div class="componentContainer" style="top: 20px; left: 310px; width: 200px; text-align: center; line-height: 1">
+							<a href="http://trac.buildbot.net/"><img src="img/4535-96-20090821130139.png" width="60" /><br/>
 							<small>Build Bot</small></a>
 						</div>
-						<div class="componentContainer" style="top: 220px; left: 130px; line-height: 1; background-color: #8F6598; padding-left: 10px; padding-right: 10px;">
+						<div class="componentContainer" style="top: 150px; left: 40px;">
 							<a href="http://www.thoughtworks-studios.com/go-agile-release-management" style="background: none;"><img src="img/hed_go_tagline_white.png" /></a>
 						</div>
-						<div class="componentContainer" style="top: 220px; left: 600px; -webkit-transform: scale(1.34, 1.34); -moz-transform: scale(1.34, 1.34); transform: scale(1.34, 1.34)">
-							<a href="http://cruisecontrol.sourceforge.net/"><img src="img/banner.png" /></a>
+						<div class="componentContainer" style="top: 160px; left: 210px;>
+							<a href="http://cruisecontrol.sourceforge.net/"><img src="img/banner.png" width="250" /></a>
 						</div>
-						<div class="componentContainer" style="top: 310px; left: 200px; width: 900px">
-							<a href="http://msdn.microsoft.com/en-us/library/vstudio/dd393574.aspx">MSBuild</a>
-							&nbsp;<a href="http://ant.apache.org/">Ant</a>
-							&nbsp;<a href="http://maven.apache.org/">Maven</a>
-							&nbsp;<a href="http://www.gradle.org/">Gradle</a>
-						</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-x="1500" data-y="3700" data-scale="2">
+				<div style="width: 1024px; height: 768px">
+					<div class="box" style="position: absolute; top: 160px; left: 190px; width: 600px;">
+						<ul style="margin: 0px;">
+							<li><a href="http://msdn.microsoft.com/en-us/library/vstudio/dd393574.aspx">MSBuild</a> / <a href="http://nant.sourceforge.net/">NAnt</a></li>
+							<li><a href="http://maven.apache.org/">Maven</a> / <a href="http://ant.apache.org/">Ant</a> / <a href="http://www.gradle.org/">Gradle</a></li>
+							<li>Other platform dependent</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -430,6 +502,7 @@
     	<script>if ("ontouchstart" in document.documentElement) {     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";}</script>
 	</div>
 	<script type="text/javascript" src="scripts/impress.js"></script>
+	<script type="text/javascript" src="scripts/impressConsole.js"></script>
 	<script type="text/javascript" src="cd.js"></script>
 </body>
 </html>

@@ -1,4 +1,9 @@
-	if (!window.impressStarted) {    startImpress(document, window);    impress().init();   }
+	if (!window.impressStarted) {
+		startImpress(document, window);
+		impress().init();
+		console().init();
+	    console().open();
+	}
 
 	$(document).ready(function() {
         $(document).on('impress:stepenter', function(e) {
