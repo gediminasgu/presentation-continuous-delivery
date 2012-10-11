@@ -30,6 +30,12 @@
             if (e.keyCode==77) {
             	$("#manual-testing").animate({opacity:'toggle'});
             }
+            else if (e.keyCode==82) {
+            	$("#releazr").animate({opacity:'toggle'});
+            }
+            else if (e.keyCode==70) {
+            	$("#releazr_facts").animate({opacity:'toggle'});
+            }
         })
     });
 

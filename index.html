@@ -13,6 +13,29 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 	<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="scripts/highcharts.js"></script>
+	<style>
+	div.cd-cell {
+		background-color: white;
+		padding: 10px;
+		width: 180px;
+		border: 1px solid #888888;
+		-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+		-webkit-border-radius: 10px;
+		-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+		-moz-border-radius: 10px;
+		float: left;
+		height: 500px;
+	}
+	div.cd-cell ul {
+		font-size: 40%;
+		line-height: 1;
+		margin: 0px !important;
+		padding: 0px !important;
+	}
+	div.cd-cell h3 {
+		font-size: 70%;
+	}
+	</style>
 </head>
 <body class="impress-not-supported">
 	<div class="fallback-message">
@@ -55,6 +78,21 @@
 			</div>
 			<div class="step" data-x="200" data-y="2100" data-scale="1">
 				<div class="adform_other">
+					<img src="img/adform1.jpg" />
+				</div>
+				<div class="notes">
+				</div>
+			</div>
+			<div class="step" data-x="200" data-y="2900" data-scale="1">
+				<div class="adform_other">
+					<img src="img/adform2.jpg" />
+				</div>
+				<div class="notes">
+				</div>
+			</div>
+
+			<div class="step" data-x="200" data-y="3700" data-scale="1">
+				<div class="adform_other">
 					<h2>Disclaimer</h2>
 					<p style="text-align:center">
 						We’ve started to work on<br/>
@@ -64,28 +102,9 @@
 					</p>
 				</div>
 				<div class="notes">
-					At Adform we have started to automate our builds and similar stuff about 4 or more years ago
-					but just 2 years ago we stated objective to our selfs that we want to have Continuous Delivery.
-					Since then we have changed a lot in our development process and now I'll share our experience,
-					achievements and losses reaching that objective with you.
-				</div>
-			</div>
-			<div class="step" data-x="1250" data-y="500" data-scale="1">
-				<div class="adform_other">
-					<h2>Agenda</h2>
-					<ul>
-						<li>What Continuous Delivery(CD) is?</li>
-						<li>Pillars of CD</li>
-						<li>Process & Tools</li>
-					</ul>
-				</div>
-				<div class="notes">
-					In this presentation I'll talk what CD is,<br/>
-					what is the foundation of CD or in other words what you should change or achieve in your development
-					process to successfully go into CD<br/>
-					And if you are new to process automation, continuous integration and you are interested what tools to choose
-					in the last part I'll go through the process and will talk about what tools we've tried for what purpose
-					what works to us and what don't. 
+					A few years ago we have started to using agile practices. During those years we became SCRUM gurus
+					learned how to count our performance and find-out that our performance is not so good as we have
+					expected. 
 				</div>
 			</div>
 			<div id="reality" class="step" data-x="1250" data-y="1300" data-scale="1">
@@ -101,9 +120,6 @@
 					Before starting CD and I believe it's the same or similar for every new Agile team, we were spending only
 					about half of sprint for real development. Other part went Scrum rituals, manual regression testing, package
 					preparation, deployment to different environments, integration testing and so on.<br/>
-					So, only the 50% (or 5 days) of our time we were spending on business value, other 30% (or 3 days) were spent
-					on routine, not interesting tasks. So that's lost for developer because that is boring tasks, that is lost
-					for business because during that 3 days we don't add value to the business.
 				</div>
 			</div>
 			<div id="challenge" class="step" data-x="1250" data-y="2100" data-scale="1">
@@ -114,9 +130,7 @@
 				</div>
 				<div class="notes">
 					Wouldn't it be nice having 7 or even 8 days for development in place of 5. That's from 40 to 60 additional days
-					per year for development! So you have two choices. The first: just develop in production. Imagine, no release
-					packs, releases to different environments. Of course, your business won't run for long. The other way is ...
-					to implement CD. 
+					per year for development!
 				</div>
 			</div>
 			<div class="step" data-x="2300" data-y="500" data-scale="1">
@@ -162,10 +176,85 @@
 				</div>
 				<div class="notes">
 					So, to achieve CD you should be done following tasks.
-					Source control. I think that's common these days.
+					Source control. I think it's common these days. But in any way you should have it, to run your code down by
+					the CD pipeline.<br/>
+					From source control your code goes to CI tool, automatically builds it, checks for quality running unit,
+					integration, ui and other tests and if everything is OK, builds release package and prepares for release.<br/>
+					Later your package will be automatically deployed, run smoke tests to check if application runs correctly
+					and thats all. Now you should just monitor your application to make sure that it runs without any problems
+					and successfully provides service to your customer.
+					
 				</div>
 			</div>
-			<div class="step" data-x="2300" data-y="1300" data-scale="1">
+			<div class="step" data-x="2300" data-y="2100" data-scale="1">
+				<div class="adform_other">
+					<h2 style="font-size: 110%; padding-top: 20px;">Continuous Integration Maturity Model</h2>
+					<div class="cd-cell">
+						<h3>Intro</h3>
+						<ul>
+							<li>Using Source Code</li>
+							<li>Nightly Builds</li>
+							<li>Current Issues Tracked & Knowledge base</li>
+						</ul>
+					</div>
+					<div class="cd-cell">
+						<h3>Novice</h3>
+						<ul>
+							<li>Builds triggered on Commit</li>
+							<li>Automated Deploy to Dev</li>
+							<li>Unit Tests Run on every build</li>
+							<li>Generate Change Log</li>
+							<li>Collect Code Coverage Data</li>
+							<li>Code Integrity Checks</li>
+							<li>Static Analysis Used</li>
+							<li>Run-time Analysis</li>
+							<li>Automated API Documentation generation</li>
+						</ul>
+					</div>
+					<div class="cd-cell">
+						<h3>Intermediate</h3>
+						<ul>
+							<li>Automated Deployment to testing environments</li>
+							<li>On demand deployments to controlled environments</li>
+							<li>Per Env. Smoke Test</li>
+							<li>Manual Test Results in CI Server</li>
+							<li>Business visibility reports</li>
+							<li>Flag a CI build as Release Candidate (promotion)</li>
+							<li>Product Activity Metrics</li>
+							<li>Auto-update Defect Tracking</li>
+							<li>Pre-commit Builds</li>
+							<li>Data roll-up</li>
+							<li>Automatic Cleanup of old Data</li>
+						</ul>
+					</div>
+					<div class="cd-cell">
+						<h3>Advanced</h3>
+						<ul>
+							<li>High Code Coverage</li>
+							<li>Automatic Func. Testing</li>
+							<li>Multi-Threaded / Scalable build systems</li>
+							<li>Change Reporting / SQA Impacts</li>
+							<li>Defect Trending</li>
+							<li>Indentify Problem Code from Metrics</li>
+							<li>Auto-Deploy to Prod</li>
+							<li>Auto-Rollback in Prod</li>
+							<li>Environment Monitoring</li>
+							<li>Alerts based on build metrics tresholds</li>
+							<li>Security Scans</li>
+						</ul>
+					</div>
+					<div class="cd-cell">
+						<h3>Insane</h3>
+						<ul>
+							<li>Continuous Deployment to Prod</li>
+						</ul>
+					</div>
+					<p style="font-size: 40%;">
+						<a href="http://www.slideshare.net/Urbancode/continuous-delivery-maturity-model">http://www.slideshare.net/Urbancode/continuous-delivery-maturity-model</a>
+					</p>
+				</div>
+			</div>
+			<!--<div class="step" data-x="2300" data-y="2900" data-scale="1">
 				<div class="adform_other">
 					<h2>Our starting point</h2>
 					<ul style="line-height: 1.3; font-size: 90%;">
@@ -186,8 +275,13 @@
 						<li style="color: #CC0000">Monitoring</li>
 					</ul>
 				</div>
+			</div>-->
+			<div class="step" data-x="2300" data-y="2900" data-scale="1">
+				<div class="adform_topic">
+					<h1>So... we went insane!</h1>
+				</div>
 			</div>
-			<div class="step" data-x="2300" data-y="2100" data-scale="1">
+			<div class="step" data-x="2300" data-y="3800" data-scale="1">
 				<div class="adform_other">
 					<h2>After two months...</h2>
 					<ul style="line-height: 1.3; font-size: 90%;">
@@ -247,7 +341,22 @@
 					<div id="manual-testing" class="componentContainer" style="left:0px; top:0px; background-color:rgba(255,255,255,0.9); display:none; width: 1024px; height: 768px; text-align: center; vertical-align: middle;">
 						<img src="img/say_no.gif" style="margin-top: 200px;"></img>
 						<div class="componentContainer" style="top: 420px; left: 0px; width: 100%;">Manual Testing</div>
+						<p align="right"><i>"I have alergy to manual testing"</i></p>
+						<p align="right"><i>- Feliksas</i></p>
 					</div>
+				</div>
+				<div class="notes">
+					Next pillar is TDD and automated testing because only automated testing matters.
+					Two years ago we were spending a lot on manual regresion testing during release to PROD. And during the same
+					presentation when we said that we will start write unit test to gain some coverage we hard a lot of
+					"some legacy code is hard to test", "tests take too much time to write" and similar. Now from the same guys
+					I hear phrases like "don't forget to write tests", "that code part is poorly tested" and etc. So again,
+					it's something about culture too what you should change going to CD.<br/>
+					If you don't have any tests, you work on legacy code don't be afraid. Just start writing the first one.
+					Start writing test for every bug found. Writing tests and writing really good tests is very hard. But
+					don't stop after first fail, keep going. One day you will feel that you can fully trust tests and you
+					don't need to test it manually. That's very good filling.<br/>
+					Just say your self "No more manual testing"!<br/>
 				</div>
 			</div>
 			<div class="step" data-x="7900" data-y="1300" data-scale="1">
@@ -279,6 +388,28 @@
 						<li>Monitor system</li>
 						<li>“Do we know that it still works?”</li>
 					</ul>
+				</div>
+				<div class="notes">
+					And the last thing, your system must be immune if you want to achieve CD. What does it mean?
+					If during the release your release package will fail in some place, your application shouldn't
+					stop providing service. In other words your clients shouldn't feel that application upgrade is going
+					even if your release has failed.<br/>
+					At Adform we use different version switch patterns. For example if we deploying application to many servers
+					at first we deploy just to few of them and then running smoke tests, monitoring for bad things.
+					If something goes wrong we just disconnect servers with new version from cluster and after rollback we test
+					again and returning servers back to cluster.<br/>
+					If it is small web application which runs on one server we just deploy it to new folder and change server
+					settings to server from new folder. If something wrong happens, we just switch back to old folder.<br/>
+					Recently we had very interesting experience when we started to migrate one web application to new architecture.
+					Application was quite big and migration took several sprints. But in place collecting changes and releasing once
+					after few sprints we did release each sprint redirecting just some users to new application. If they go try
+					to use function which is not yet available in new application we redirect they back to old application. In such
+					way sprint by sprint we migrated full application continuously releasing to PROD and receiving feedback.<br/>
+					And the last important thing for immune system is monitoring. Two years ago we were working without application
+					monitoring and we didn't know if it works if it performs well. Now we can't imagine our system without monitoring
+					and every new funcionality development starts from questions "what metrics we should provide to be sure that
+					our service still works?". So now we are immedietly informed if something is wrong with our applications.<br/>
+					And again to start thinking in such way the mindset must be changed, the culture must be changed to achieve this.
 				</div>
 			</div>
 			<div class="step" data-x="3400" data-y="2100" data-scale="1">
@@ -315,6 +446,19 @@
 						</div>
 					</div>
 				</div>
+				<div class="notes">
+					There is a lot of different source controls but I have chose just few of them, the most popular.
+					So, that is SVN, the most simplest, Git and Mercurial. At Adform mostly we use SVN but recently
+					have started to move to Git. With Git we use GitLab. It's like GitHub but open source and ofcourse with
+					less features. These tools adds social layer to source repository
+					and brings such features for every even small application like issues, wiki, merge requests. Using GitLab
+					we find out that many tools which we have developed and use inside Adform became more documented, GitLab
+					became a place where you can register issue.<br/>
+					And the main feature which I like in GitLab is merge requests. We code features
+					on separate branches and when it is finished we send merge request to some of team members asking to review
+					code and merge it to the master branch. GitLab provides tools to review changed code, lets add comments
+					to your code and similar stuff. So using that tool we started to review our code and get all the benefits of it.
+				</div>
 			</div>
 			<div class="step" data-x="2100" data-y="4700" data-scale="3">
 				<div style="width: 1024px; height: 768px">
@@ -337,6 +481,15 @@
 							<a href="http://cruisecontrol.sourceforge.net/"><img src="img/banner.png" width="250" /></a>
 						</div>
 					</div>
+				</div>
+				<div class="notes">
+					If you don't have CI tool there is a lot to choose of. The most popular open source CI tool is Jenkins. It has
+					more than 400 different plugins for different purpose. Another open source and very popular CI tool is build
+					bot. But it is for very advanced users. In the worls it is used to build and test MongoDB, Linux kernels.
+					The most oldest CI tool from these is CC, some tools like ThoughtWorks Go is using it as a platform.
+					Go and Teamcity is paid tools. You can use them free of charge if you have just a few projects
+					but if you need more you should buy it. At Adform we mostly use TeamCity. But there is some places where
+					we use Jenkins.  
 				</div>
 			</div>
 			<div class="step" data-x="1500" data-y="3700" data-scale="2">
@@ -482,8 +635,14 @@
 						<li><img src="img/check.png" style="margin-left: -60px;" /> Different types of tests: unit, integration, API, JavaScript, UI and other</li>
 						<li><img src="img/check.png" style="margin-left: -60px;" /> Single click, environment aware deployment</li>
 						<li><img src="img/check.png" style="margin-left: -60px;" /> Company wide monitoring</li>
-						<li><img src="img/check.png" style="margin-left: -60px;" /> Two teams with permission to deploy to Production at any time</li>
+						<li><img src="img/check.png" style="margin-left: -60px;" /> Teams has permission to deploy to Production at any time</li>
 					</ul>
+				</div>
+				<div id="releazr" style="position: absolute; left:0px; top:0px; background-color:rgba(255,255,255,0.9); display:none; width: 1024px; height: 768px;">
+					<img src="img/releazr.jpg"/>
+				</div>
+				<div id="releazr_facts" style="position: absolute; left:0px; top:0px; background-color:rgba(255,255,255,0.9); display:none; width: 1024px; height: 768px;">
+					<img src="img/releazr_facts.jpg"/>
 				</div>
 			</div>
 			<div class="step" data-x="7000" data-y="2100" data-scale="1">
